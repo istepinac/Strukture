@@ -8,16 +8,14 @@ typedef struct Student {
     int score;
 } Student;
 
-int openData();
-Student* allocate(int numberOfStudents);
-int loadData(Student* students, int numberOfStudents);
-int findBestScore(Student*, int);
-float relativeScore(int, int);
+int openData(); //funkcija za otvaranje datoteke, vraća broj redaka datoteke
+Student* allocate(int numberOfStudents); // funkcija za alociranje memorije
+int loadData(Student* students, int numberOfStudents); // funkcija za dohvaćanje podataka iz datoteke
+int findBestScore(Student*, int); // funkcija koja traži najveći broj bodova među studentima
+float relativeScore(int, int); // funkcija za računanje relativnog broja bodova
 
 int main() {
     int numberOfStudents = openData();
-
-    printf("There are %d students in the file\n", numberOfStudents);
 
     Student* students = allocate(numberOfStudents);
     if (students == NULL) return 2;
@@ -30,7 +28,7 @@ int main() {
         printf("%s %s %d %.2f \n", students[i].name, students[i].surname, students[i].score, relativeScore(students[i].score, bestScore));
     }
 
-    free(students); // always free dynamically allocated memory
+    free(students);
     return 0;
 }
 
