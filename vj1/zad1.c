@@ -86,6 +86,6 @@ int findBestScore(Student* students, int numberOfStudents){
 }
 
 float relativeScore(int score, int bestScore){
-    float relativeScore = ( (float )score/bestScore) * 100.00;
+    float relativeScore = ( (float )score/(float) bestScore) * 100.00;
     return relativeScore;
 }
