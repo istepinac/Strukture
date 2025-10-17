@@ -12,7 +12,6 @@
 #include <string.h>
 #define CRT_SECURE_NO_WARNINGS
 #define INITIALIZE_ERROR -1
-#define SURNAME_NOT_FOUND -2
 
 typedef struct Person* Position;
 typedef struct Person {
