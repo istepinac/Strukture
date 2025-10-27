@@ -202,7 +202,7 @@ int printList(Position head) {
 
 Position searchBySurname(Position head, char surname[30]){
     Position temp = head->next;
-    while(temp != NULL  && strcmp(temp->surname, surname) != 0){
+    while(temp != NULL  && strcasecmp(temp->surname, surname) != 0){
         temp=temp->next;
     }
     if(temp==NULL){
@@ -288,7 +288,7 @@ int sortListBySurname(Position head){
          p= head;
          q = p->next;
         while (q->next != NULL) {
-            if (strcmp(q->surname,q->next->surname)>0) {
+            if (strcasecmp(q->surname,q->next->surname)>0) {
                 Position temp = q;
                 p->next = q->next;
                 temp->next = q->next->next;
@@ -389,8 +389,8 @@ int readListFromFile(Position head) {
         return -2;
     }
     int choice;
-    if (head->next == NULL){
-        choice==0;
+    if (head->next == NULL){ //ako nam je lista prazna - ucitava odmah podatke
+        choice=0;
     }
     else{
         printf("Do you want to append (0) or overwrite (1)? ");
