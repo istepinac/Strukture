@@ -38,8 +38,8 @@ int sortListBySurname(Position head); //funkcija za sortiranje elemenata po prez
 int countListElements(Position head); //funkcija koja broji koliko ima clanova liste
 int menuPick();// funkcija koja pokazuje menu odabira i vraca odabranu vrijednost
 int pauseScreen(); //funkcija koja sluzi kako bi zaustavila loop dok korisnik ne pritisne ENTER - zbog citljivosti programa
-int insertListToFile(Position head);
-int readListFromFile(Position head);
+int insertListToFile(Position head); // funkcija koja upisuje vezanu listu u file
+int readListFromFile(Position head); //funkcija koja ucitava listu iz datoteke
 
 
 
@@ -54,7 +54,7 @@ int main() {
     char name[20], surname[30], searchSurname[30], elementSurname[30];
     int birthYear;
 
-    while (1) {
+    while (1) { //menu za biranje funkcija
         int pick = menuPick();
         switch (pick) {
         case 0:
