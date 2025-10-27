@@ -357,6 +357,11 @@ int insertListToFile(Position head) {
     if (choice == 0)
         strcpy(mode, "a");
     else if (choice == 1)
+        if(temp==NULL){
+            printf("The list is empty – nothing was written to data");
+            return 0;
+        }
+    else
         strcpy(mode, "w");
     else {
         printf("Invalid choice. Aborting.\n");
