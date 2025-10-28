@@ -11,7 +11,7 @@
 #include <string.h>
 #define _CRT_SECURE_NO_WARNINGS
 #define INITIALIZE_ERROR -1
-#define ERROR_OPENING_FILE -1
+#define ERROR_OPENING_FILE -2
 
 
 typedef struct Person* Position;
