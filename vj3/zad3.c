@@ -235,7 +235,7 @@ int deleteElementBySurname(Position head, char surname[30]){
     return 0;
 }
 int freeList(Position head){
-    Position temp = head->next;
+    Position temp = head;
     while (temp!=NULL) {
         Position next = temp->next;
         free(temp);
