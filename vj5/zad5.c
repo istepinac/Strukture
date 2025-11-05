@@ -13,14 +13,14 @@ typedef struct Number{
     Position next;
 }Number;
 
-Position init();
-Position allocate();
-int pop(Position head);
-int push(Position head, double number);
-int calculate(Position head, char buffer);
-int readFile(Position head);
-int printResult(Position head);
-int freeStack(Position head);
+Position init(); //funkcija za inicijaliziranje novog elementa na 0
+Position allocate(); //fucnkija za alociranje memorije
+int pop(Position head); //funkcija za brisanje zadnje dodanog elementa
+int push(Position head, double number); //funkcija za dodavanje novog elementa
+int calculate(Position head, char buffer); //funkcija za racunanje operacija
+int readFile(Position head);//funkcija za citanje podataka iz datoteke
+int printResult(Position head);//funkcija za ispis rezultata
+int freeStack(Position head);//funkcija za oslobadanje memorije cijelog stoga
 
 int main() {
     Position head = init();
