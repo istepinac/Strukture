@@ -175,3 +175,24 @@ int totalMoneySpent(receiptPosition head){
     printf("In total you have bought %d items and spent %.2f euros\n",totalQuantity,totalMoney);
     return EXIT_SUCCESS;
 }
+
+
+receiptPosition createCartList(){
+    receiptPosition cartHead = receiptInit();
+    char name[50];
+    int quantity;
+    
+    printf("Enter the items for your shopping cart (enter '0' to finish):\n");
+    while(1) {
+        printf("Item name: ");
+        scanf("%s", name);
+        if(strcmp(name, "0") == 0) break;
+        
+        printf("Quantity: ");
+        scanf("%d", &quantity);
+        itemPosition newItem = setItemValues(name, quantity, 0.0);
+        newItem->next = cartHead->item;
+        cartHead->item = newItem;
+    }
+    return cartHead;
+}

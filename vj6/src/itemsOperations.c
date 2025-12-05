@@ -89,7 +89,90 @@ int countItemCostInDateRange(receiptPosition head, char name[], char dateFrom[],
     return EXIT_SUCCESS;
 }
 
+int calculateItemInflation(receiptPosition head, char name[], char dateFrom[], char dateTo[]){
+    receiptPosition temp = head->next;
+    int flag = 0;
+    double startPrice = 0.0;
+    double lastPrice = 0.0;
+    int itemCounter = 0;
+    while(temp != NULL){
+        if(strcmp(temp->date,dateFrom)>=0 && strcmp(temp->date,dateTo)<=0){
+            itemPosition itemTemp = temp->item;
+            while(itemTemp != NULL && strcmp(itemTemp->name,name)!=0){
+                itemTemp = itemTemp->next;
+            }
+            if(itemTemp !=NULL){
+                if (flag == 0) {
+                    lastPrice = itemTemp->price;
+                    startPrice = itemTemp->price;
+                    itemCounter++;
+                    flag =1;
+                }
+                else{
+                    startPrice = itemTemp->price;
+                    itemCounter++;
+                }
 
+                
+            }
+            
+        }
+        temp = temp->next;
+    }
+    
+    if(itemCounter < 2){
+        printf("There are not enough data points to track inflation for '%s'.\n", name);
+        return  EXIT_FAILURE;
+    }
+    
+   double percent = ((lastPrice - startPrice) / startPrice) * 100.0;
+   
+    
+    printf("From %s to %s, item '%s' changed in price from %.2f to %.2f (%.2f%%).\n", dateFrom, dateTo,name,startPrice,lastPrice, percent);
+
+    
+    return EXIT_SUCCESS;
+}
+
+
+
+int calculateCartTotal(receiptPosition receipts) {
+    double total = 0.0;
+
+    receiptPosition cartHead = createCartList();
+    itemPosition cartTemp = cartHead->item;
+    while(cartTemp != NULL) {
+        receiptPosition temp = receipts->next;
+        double latestPrice = 0.0;
+        int found = 0;
+
+        while(temp != NULL && !found) {
+            itemPosition itemTemp = temp->item;
+            while(itemTemp != NULL) {
+                if(strcmp(itemTemp->name, cartTemp->name) == 0) {
+                    latestPrice = itemTemp->price;
+                    found = 1;
+                    break;
+                }
+                itemTemp = itemTemp->next;
+            }
+            temp = temp->next;
+        }
+
+        if(found) {
+            total += latestPrice * cartTemp->quantity;
+        } else {
+            printf("Item %s is not found in receipts!\n", cartTemp->name);
+        }
+
+        cartTemp = cartTemp->next;
+    }
+    
+    printf("Your shopping cart will cost %.2f euros.\n",total);
+    
+
+    return EXIT_SUCCESS;
+}
 
 int userOperations(receiptPosition head){
     int pick;
@@ -101,7 +184,9 @@ int userOperations(receiptPosition head){
         printf("3 - Show total money spent overall\n");
         printf("4 - Find the most expensive receipt\n");
         printf("5 - Find the cheapest receipt\n");
-        printf("6 - Exit program\n");
+        printf("6 - Calculate the inflation of specific item in date range\n");
+        printf("7 - Calculate your shopping cart\n");
+        printf("8 - Exit program\n");
 
         scanf("%d",&pick);
         switch (pick) {
@@ -154,6 +239,24 @@ int userOperations(receiptPosition head){
                 break;
                 
             case 6:
+                printf("Enter item name:  ");
+                scanf("%s",name);
+                printf("Enter start date (YYYY-MM-DD): ");
+                scanf("%10s", dateFrom);
+                
+                printf("Enter end date   (YYYY-MM-DD): ");
+                scanf("%10s", dateTo);
+                
+                calculateItemInflation( head, name, dateFrom, dateTo);
+                pauseScreen();
+                break;
+            
+            case 7:
+                calculateCartTotal(head);
+                pauseScreen();
+                break;
+
+            case 8:
                 printf("Exiting program...\n");
                 freeList(head);
                 return 0;

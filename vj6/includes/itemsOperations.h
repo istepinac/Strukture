@@ -20,6 +20,9 @@ itemPosition setItemValues(char name[],int quantity, double price);//funkcija ko
 int addItemToReceipt(receiptPosition receipt, char name[], int quantity, double price); //funckcija koja sortirano dodaje artikal na racun
 int countItemCostInDateRange(receiptPosition head, char name[], char dateFrom[], char dateTo[]);//funkcija koja za trazeni artikal racuna koliko puta je kupljen i koliko se potrosilo novaca na njega u odredenom vremenskom intervalu
 int userOperations(receiptPosition head); //funkcija koja omogucuje korisniku odabir operacija nad listom
+int calculateItemInflation(receiptPosition head, char name[], char dateFrom[], char dateTo[]); //funkcija koja racuna promjenu cijene upisanog proizvoda u vremenskom intervalu
+int calculateCartTotal(receiptPosition receipts); //funkcija koja racuna koliko bi ukupno kostala korisnikova kosarica na osnovu zadnjeg racuna na kojem je artikl vidjen
+
 
 
 #endif

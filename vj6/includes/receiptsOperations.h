@@ -19,5 +19,6 @@ int printReceiptsInRange(receiptPosition head, char dateFrom[], char dateTo[]); 
 int findTheMostExpensiveReceipt(receiptPosition head);//funkcija koja trazi najskuplji racun
 int findTheCheapestReceipt(receiptPosition head); //funkcija koja trazi najjeftiniji racun
 int totalMoneySpent(receiptPosition head);//funkcija koja racuna koliko se ukupno novaca potrosilo na sve racune
+receiptPosition createCartList();//funkcija koja kreira kosaricu sa proizvodima koje korisnik upise
 
 #endif

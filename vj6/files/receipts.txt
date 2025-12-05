@@ -1,3 +1,10 @@
 files/receipt1.txt
 files/receipt2.txt
 files/receipt3.txt
+files/receipt4.txt
+files/receipt5.txt
+files/receipt6.txt
+files/receipt7.txt
+files/receipt8.txt
+files/receipt9.txt
+files/receipt10.txt
