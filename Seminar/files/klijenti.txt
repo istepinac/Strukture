@@ -1,0 +1,5 @@
+Luka Jurić 0939936843 files/automobili1.txt
+Petra Perić 0969238746 files/automobili2.txt
+Marko Jurić 0947116444 files/automobili3.txt
+Nikola Šarić 0961589626 files/automobili4.txt
+
